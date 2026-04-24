@@ -1,0 +1,626 @@
+# Clinica-Router AI: Comprehensive Test Suite
+# Target Endpoint: POST /router
+# Expected Payload: { "patient_id": "string", "query": "string" }
+
+================================================================================
+CATEGORY 1: CARDIOLOGY ROUTING
+================================================================================
+
+TEST CASE 1.1: Direct Chest Pain
+Payload: { "patient_id": "patient-001", "query": "I am experiencing sharp chest pain and shortness of breath." }
+Expected Specialty: cardiology
+Expected Response: Should provide emergency advice and cite cardiology documents.
+^^^^^^
+Response: 
+ {
+  "answer": "I'm here to help you. Based on your symptoms, I'm concerned that you might be experiencing a cardiovascular issue. Sharp chest pain and shortness of breath can be symptoms of several conditions, including myocardial infarction (MI) (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 92).\n\nIt's essential to note that coarctation of the aorta, a condition characterized by a narrowing of the aorta, can also cause chest pain and shortness of breath (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 21). Coarctation of the aorta can lead to diminished and delayed femoral pulse, reduced femoral blood pressure, and notching of ribs on chest X-ray (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 21).\n\nI strongly advise you to seek immediate medical attention. A healthcare professional will be able to assess your condition and provide the necessary treatment.\n\nPlease note that I'm a medical assistant, and it's crucial to consult a doctor for a proper diagnosis and treatment plan.",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 92
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 21
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 8
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+^^^^^^^^
+
+TEST CASE 1.2: High Blood Pressure Inquiry
+Payload: { "patient_id": "patient-001", "query": "What are the long-term risks of having a blood pressure of 140/90?" }
+Expected Specialty: cardiology
+Note: The mock patient already has Hypertension, which reinforces this route.
+^^^^^^
+Response: 
+{
+  "answer": "Unfortunately, the provided context does not directly address the long-term risks of having a blood pressure of 140/90. However, it does mention that the total risk of cardiovascular disease for any given level of blood pressure rises with age (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 48).\n\nIt also mentions that the Hypertension Optimal Treatment (HOT) trial found maximal cardiovascular benefit when blood pressure was reduced to 139/83 mmHg (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 48). This suggests that blood pressure levels above 139/83 mmHg may be associated with increased cardiovascular risk.\n\nHowever, to determine the specific long-term risks of having a blood pressure of 140/90, I would need more information or context.",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 48
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 43
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 20
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+^^^^^^^^^^^^
+
+TEST CASE 1.3: Heart Palpitations
+Payload: { "patient_id": "patient-001", "query": "My heart feels like it is skipping beats lately, especially at night." }
+Expected Specialty: cardiology
+
+^^^^^^
+Response : 
+{
+  "answer": "Based on the provided context, it seems like you're experiencing palpitations, which can be a symptom of various conditions. However, I couldn't find any direct information about palpitations in the provided context.\n\nHowever, I can suggest some possible causes of palpitations mentioned in the context. For example, hypokalaemia (low potassium levels) can cause palpitations (Source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 21). Additionally, Cushing syndrome, which is characterized by symptoms such as truncal obesity, rounded face, buffalo hump, thin skin, abdominal striae, etc., can also cause palpitations (Source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 21).\n\nIt's essential to consult a healthcare professional for a proper evaluation and diagnosis of the underlying cause of your symptoms. They will be able to assess your overall health and provide a more accurate diagnosis and treatment plan.\n\nPlease note that the context provided does not directly address your symptoms, and it's essential to consult a healthcare professional for a proper evaluation and diagnosis.",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 92
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 46
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 21
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+^^^^^^^^^^^^
+
+================================================================================
+CATEGORY 2: PEDIATRICS ROUTING
+================================================================================
+
+TEST CASE 2.1: Infant Fever
+Payload: { "patient_id": "patient-001", "query": "My 6-month-old has a fever of 102F and is very fussy." }
+Expected Specialty: pediatrics
+Note: Should override the "45-year-old" patient context because the query specifies an infant.
+
+^^^^^^
+Response: 
+{
+  "answer": "Based on the provided context, for a 6-month-old child with a fever of 102F (38.9°C), the recommended treatment is:\n\nFirst, assess the child's condition and look for signs of systemic infection. If the child is diagnosed with a urinary tract infection, treat with gentamicin at 7.5 mg/kg IM or IV once daily until the fever has subsided (Source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 210).\n\nHowever, since the context does not mention a urinary tract infection, let's consider other possibilities. The child's fever and fussiness could be related to measles, given the child's age. For non-severe measles, the recommended treatment is vitamin A therapy (Source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 202). Give the child 50,000 IU of oral vitamin A.\n\nAdditionally, since the child's temperature is 102F (38.9°C) and is causing distress, give paracetamol to help reduce the fever (Source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 200).\n\nIt's also essential to provide supportive care, such as encouraging the mother to continue breastfeeding and giving the child frequent small meals to maintain good fluid intake and prevent dehydration (Source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 210).\n\nPlease note that these recommendations are based on the provided context, and it's always best to consult with a healthcare professional for personalized advice.",
+  "citations": [
+    {
+      "source": "WHO pocket book of hospital care for children 2nd edition.pdf",
+      "page": 210
+    },
+    {
+      "source": "WHO pocket book of hospital care for children 2nd edition.pdf",
+      "page": 202
+    },
+    {
+      "source": "WHO pocket book of hospital care for children 2nd edition.pdf",
+      "page": 200
+    }
+  ],
+  "specialty": "pediatrics",
+  "error": null
+}
+^^^^^^^^^^^^^^
+
+
+TEST CASE 2.2: Childhood Vaccinations
+Payload: { "patient_id": "patient-001", "query": "What is the recommended schedule for the MMR vaccine?" }
+Expected Specialty: pediatrics
+
+^^^^^^^^
+Old Response: {
+{
+  "answer": "The recommended schedule for the MMR (measles, mumps, and rubella) vaccine is two doses, given at least 28 days apart. The first dose is typically administered at 12-15 months of age, and the second dose is given at 4-6 years of age (source: CDC, Vaccines and Preventable Diseases, page 12).\n\nIt's essential to note that some children may receive the first dose as early as 6 months of age if they are traveling to areas with high measles transmission or if they are at increased risk of exposure (source: WHO, Immunization, Vaccines and Biologicals, page 34).\n\nHowever, it's crucial to consult with your healthcare provider to determine the best vaccination schedule for your child, as they may have specific recommendations based on your child's individual needs and health status (source: AAP, Red Book, page 245).",
+  "citations": [],
+  "specialty": "pediatrics",
+  "error": null
+}
+}
+New Response : 
+{
+  "answer": "Unfortunately, the provided context does not mention the MMR vaccine.",
+  "citations": [
+    {
+      "source": "WHO immunization in practice a guide for health workers.pdf",
+      "page": 54
+    },
+    {
+      "source": "WHO immunization in practice a guide for health workers.pdf",
+      "page": 42
+    },
+    {
+      "source": "WHO immunization in practice a guide for health workers.pdf",
+      "page": 50
+    }
+  ],
+  "specialty": "pediatrics",
+  "error": null
+}
+
+TEST CASE 2.3: Pediatric Rash
+Payload: { "patient_id": "patient-001", "query": "My toddler has a red bumpy rash after eating strawberries." }
+Expected Specialty: pediatrics
+
+^^^^^^^
+Response: 
+{
+  "answer": "Based on the provided context, it seems that the symptoms you're describing (red bumpy rash) could be related to a viral infection such as rubella. However, the context also mentions that the rash can be caused by a variety of factors, including exposure to the virus 7-14 days before the rash appears.\n\nTo determine the cause of the rash, I would recommend consulting a healthcare professional for a proper evaluation and diagnosis. They can assess the child's overall health, medical history, and symptoms to determine the underlying cause of the rash.\n\nIn the meantime, if the child is experiencing diarrhea, it's essential to follow the guidelines provided in the WHO pocket book of hospital care for children 2nd edition (p. 158). This includes offering frequent small meals, at least six times a day, and providing an extra meal a day for 2 weeks.\n\nIt's also essential to note that the context mentions that children with CRS (Congenital Rubella Syndrome) can transmit the virus for a year or more (WHO immunization in practice a guide for health workers, p. 64). However, this is not directly related to the symptoms you've described.\n\nPlease consult a healthcare professional for further guidance and evaluation.\n\n(source: WHO immunization in practice a guide for health workers.pdf, page 64)",
+  "citations": [
+    {
+      "source": "WHO immunization in practice a guide for health workers.pdf",
+      "page": 64
+    }
+  ],
+  "specialty": "pediatrics",
+  "error": null
+}
+
+================================================================================
+CATEGORY 3: DRUG SAFETY ROUTING
+================================================================================
+
+TEST CASE 3.1: Drug Interactions
+Payload: { "patient_id": "patient-001", "query": "Is it safe to take Metformin with Ibuprofen?" }
+Expected Specialty: drug_safety
+
+^^^^^^^^
+Response: 
+{
+  "answer": "Unfortunately, the provided context does not mention Metformin or Ibuprofen. However, based on the general information provided, it is recommended to conduct a thorough risk-benefit analysis of each medicine to ensure medication safety.\n\nIn general, it is essential to consider potential interactions between medications, such as NSAIDs like Ibuprofen, which can increase the risk of gastrointestinal bleeding and cardiovascular events (source: WHO medication safety in polypharmacy technical report.pdf, Page: 8).\n\nTo answer your question, I would recommend consulting a healthcare professional for a personalized assessment of the potential risks and benefits of taking Metformin with Ibuprofen.",
+  "citations": [
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 52
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 8
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 1
+    }
+  ],
+  "specialty": "drug_safety",
+  "error": null
+}
+
+
+TEST CASE 3.2: Side Effects
+Payload: { "patient_id": "patient-001", "query": "I started taking Lisinopril and now I have a persistent dry cough. Is this normal?" }
+Expected Specialty: drug_safety
+
+^^^^^^^^
+Response : 
+{
+  "answer": "Based on the provided context, it seems that Lisinopril, an ACE inhibitor, is associated with a higher risk of heart failure and stroke in certain subgroups, such as Afro-American subjects. However, it does not mention anything about a persistent dry cough as a common side effect of Lisinopril.\n\nIt's worth noting that ACE inhibitors, including Lisinopril, are known to cause a dry cough in some patients due to the mechanism of action of the medication (source: filename.pdf, page X). However, this information is not explicitly mentioned in the provided context.\n\nIf you are experiencing a persistent dry cough after starting Lisinopril, I would recommend discussing this with your healthcare provider to determine the best course of action. They may consider switching you to a different medication or adjusting your treatment plan to alleviate the side effect.",
+  "citations": [
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 24
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 49
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+
+
+TEST CASE 3.3: Dosage Safety
+Payload: { "patient_id": "patient-001", "query": "What is the maximum safe daily dose of acetaminophen for an adult?" }
+Expected Specialty: drug_safety
+
+^^^^^^^^^^
+Response: 
+{
+  "answer": "Unfortunately, the provided context does not mention the maximum safe daily dose of acetaminophen for an adult. The context discusses polypharmacy, medication safety, and a patient's specific medication regimen, but it does not address acetaminophen dosing.\n\nHowever, I can provide general information on the topic. The maximum safe daily dose of acetaminophen for an adult is typically considered to be 4 grams (4000 mg) per day, as recommended by the American Gastroenterological Association (AGA) and the American College of Gastroenterology (ACG) (source: filename.pdf, page X). However, this information is not relevant to the provided context.\n\nIf you would like to know more about acetaminophen dosing or have any other questions, please let me know.",
+  "citations": [
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 32
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 53
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 52
+    }
+  ],
+  "specialty": "drug_safety",
+  "error": null
+}
+
+^^^^^^^^^^^^
+
+================================================================================
+CATEGORY 4: CONTEXT-AWARE ROUTING (Using Mock Patient Data)
+================================================================================
+
+TEST CASE 4.1: Condition-Specific Query
+Payload: { "patient_id": "patient-001", "query": "How does my hypertension affect my risk for other diseases?" }
+Expected Specialty: cardiology
+Note: Relies on the "Conditions: Hypertension" in the FHIR mock.
+
+^^^^^^^^^
+Response: 
+{
+  "answer": "Based on the provided context, hypertension increases the risk of several other diseases, including:\n\n- Coronary heart disease (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n- Heart failure (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n- Cerebrovascular disease (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n- Peripheral vascular disease (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n- Diabetes (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n- Renal disease (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n- Stroke (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n\nAdditionally, hypertension may also increase the risk of severe COVID-19, which can lead to admission to intensive care, clinically defined severity, or mortality (source: WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf, Page: 34).",
+  "citations": [
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 43
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 22
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 34
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+
+
+TEST CASE 4.2: Medication Interaction with Condition
+  Payload: { "patient_id": "patient-001", "query": "Can I take decongestants with my current blood pressure medication?" }
+Expected Specialty: drug_safety (or cardiology)
+Note: Tests if the router prioritizes the drug safety aspect.
+
+^^^^^^^
+Response : 
+{
+  "answer": "I would advise against taking decongestants with your current blood pressure medication. Decongestants can increase blood pressure, which may interact with your medication and worsen your condition. It's essential to consult with your healthcare provider before taking any new medications, including decongestants, to ensure they won't interfere with your blood pressure treatment.\n\n(source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 31)",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 31
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 50
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 25
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+^^^^^^^^^
+
+
+================================================================================
+CATEGORY 5: EDGE CASES & NEGATIVE TESTS
+================================================================================
+
+TEST CASE 5.1: Minimal Greeting
+Payload: { "patient_id": "patient-001", "query": "Hello" }
+Expected Specialty: cardiology (default fallback)
+Expected Response: General helpful greeting.
+
+^^^^^^^
+Response :
+{
+  "answer": "Hello. How can I assist you today?",
+  "citations": [
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 4
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 4
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 8
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+^^^^^^^^^
+
+TEST CASE 5.2: Empty Query
+Payload: { "patient_id": "patient-001", "query": "" }
+Expected Result: Should either return a validation error (422) or handle gracefully via default.
+
+^^^^^^^
+Response :
+{
+  "answer": "It seems like there is no patient query provided. Please provide the patient's query so I can assist you accordingly.",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 46
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 4
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 8
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+^^^^^^^^^
+
+TEST CASE 5.3: Out of Scope
+Payload: { "patient_id": "patient-001", "query": "What is the capital of France?" }
+Expected Specialty: cardiology (default)
+Expected Response: Should state it can only answer medical queries based on context.
+
+^^^^^^^^^
+Response : 
+{
+  "answer": "I'm not able to find any information about the capital of France in the provided context. The context appears to be related to a technical report on medication safety in polypharmacy from the World Health Organization (WHO).",
+  "citations": [
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 4
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 61
+    }
+  ],
+  "specialty": "drug_safety",
+  "error": null
+}
+
+^^^^^^^^^
+
+
+TEST CASE 5.4: Missing Patient ID
+Payload: { "query": "I have a heart ache." }
+Expected Result: 422 Unprocessable Entity (missing required field).
+
+^^^^^^^
+Response :
+{
+  "detail": [
+    {
+      "type": "missing",
+      "loc": [
+        "body",
+        "patient_id"
+      ],
+      "msg": "Field required",
+      "input": {
+        "query": "I have a heart ache."
+      }
+    }
+  ]
+}
+
+^^^^^^^^
+
+TEST CASE 5.5: Non-existent Patient ID (Logic dependent)
+Payload: { "patient_id": "invalid-id-999", "query": "Help me." }
+Expected Result: Since the mock currently returns a patient for ANY id, this will pass. If the mock is disabled, it should return 404.
+
+^^^^^^^^^
+Response : 
+{
+  "answer": "I'd be happy to help you. However, I need more information about what you need assistance with. Could you please provide more context or clarify your question?",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 34
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 17
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 80
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+^^^^^^^^^
+
+--- RUNNING MISSING DRUG SAFETY TESTS ---
+
+TEST CASE 3.1: Drug Interactions
+Payload: {"patient_id": "patient-001", "query": "Is it safe to take Metformin with Ibuprofen?"}
+Response: {
+  "answer": "Based on the provided context, there is no specific information about the interaction between Metformin and Ibuprofen. However, the context does provide general guidelines for evaluating drug-drug interactions (DDIs).\n\nTo assess the safety of taking Metformin with Ibuprofen, we would need to consider the following factors:\n\n1. The exposure-response relationships for safety and efficacy of both Metformin and Ibuprofen.\n2. The variability of the observed DDI data, if available.\n3. The expected duration of concomitant drug use (e.g., acute, short-term, or chronic use of one or both drugs).\n4. The anticipated timing of the introduction of the concomitant medication.\n\nIt's recommended to consult a healthcare professional or a reliable medical resource for specific guidance on this interaction.\n\n(source: FDA_M12_drug_interaction_studies.pdf, Page: 40)",
+  "citations": [
+    {
+      "source": "FDA_M12_drug_interaction_studies.pdf",
+      "page": 24
+    },
+    {
+      "source": "FDA_M12_drug_interaction_studies.pdf",
+      "page": 40
+    }
+  ],
+  "specialty": "drug_safety",
+  "error": null
+}
+Status Code: 200
+
+TEST CASE 3.2: Side Effects
+Payload: {"patient_id": "patient-001", "query": "I started taking Lisinopril and now I have a persistent dry cough. Is this normal?"}
+Response: {
+  "answer": "I'm not able to find any specific information about your case. However, I can provide some general guidance.\n\nA dry cough can be a side effect of certain medications, including blood pressure medications like Lisinopril. If you're experiencing a persistent dry cough, it's a good idea to speak with your doctor or pharmacist to discuss your symptoms and determine the best course of action.\n\nIn the meantime, here are some general tips to help manage a dry cough:\n\n- Stay hydrated by drinking plenty of fluids, such as water or herbal tea.\n- Use a humidifier to add moisture to the air, which can help soothe a dry cough.\n- Avoid irritants like smoke, dust, or strong odors that can exacerbate a dry cough.\n- Get plenty of rest and try to manage stress, as fatigue and stress can make a dry cough worse.\n\nPlease consult with your healthcare provider for personalized advice and guidance.",
+  "citations": [],
+  "specialty": "cardiology",
+  "error": null
+}
+Status Code: 200
+
+TEST CASE 3.3: Dosage Safety
+Payload: {"patient_id": "patient-001", "query": "What is the maximum safe daily dose of acetaminophen for an adult?"}
+Response: {
+  "answer": "Unfortunately, the provided context does not contain information about the maximum safe daily dose of acetaminophen for an adult. The context appears to be related to drug interaction studies and pharmacokinetic assessments.\n\nHowever, according to general medical knowledge, the maximum safe daily dose of acetaminophen for an adult is 4000 milligrams (mg) per day. This is based on the FDA's recommended maximum daily dose of acetaminophen, which is 3250-4000 mg per day for adults (source: FDA, acetaminophen label, page X).",
+  "citations": [
+    {
+      "source": "FDA_M12_drug_interaction_studies.pdf",
+      "page": 26
+    },
+    {
+      "source": "FDA_M12_drug_interaction_studies.pdf",
+      "page": 38
+    },
+    {
+      "source": "FDA_M12_drug_interaction_studies.pdf",
+      "page": 40
+    }
+  ],
+  "specialty": "drug_safety",
+  "error": null
+}
+Status Code: 200
+
+
+--- RUNNING REMAINING TESTS (CATEGORIES 4 & 5) ---
+
+TEST CASE 4.1: Condition-Specific Query
+Payload: {"patient_id": "patient-001", "query": "How does my hypertension affect my risk for other diseases?"}
+Response: {
+  "answer": "I'm happy to provide general information, but I don't have any specific documents or information about your case. However, I can tell you that hypertension is a significant risk factor for various other diseases.\n\nHypertension can increase your risk for heart disease, stroke, kidney disease, and vision loss. It can also affect your cognitive function and increase your risk for dementia (source: 'hypertension.pdf, page 12'). \n\nTo manage your risk, it's essential to work closely with your healthcare provider to control your blood pressure through lifestyle changes and medication, if necessary. This may include maintaining a healthy diet, exercising regularly, and getting enough sleep.\n\nIf you have any concerns or questions, I recommend speaking with your healthcare provider for personalized guidance. They can help you understand your specific situation and develop a plan to manage your hypertension and reduce your risk for other diseases.",
+  "citations": [],
+  "specialty": "cardiology",
+  "error": null
+}
+Status Code: 200
+
+TEST CASE 4.2: Medication Interaction with Condition
+Payload: {"patient_id": "patient-001", "query": "Can I take decongestants with my current blood pressure medication?"}
+Response: {
+  "answer": "I'm not able to find any specific information about your current situation. However, I can provide some general guidance. It's always best to consult with your doctor or pharmacist before taking any new medications, especially if you're already taking blood pressure medication.\n\nWhen combining medications, it's essential to consider potential interactions that could affect your health. Decongestants can sometimes increase blood pressure or interact with other medications, including blood pressure medications.\n\nTo ensure your safety, I recommend speaking with your doctor or pharmacist about your specific situation. They can review your medications and provide personalized advice on whether it's safe to take decongestants with your current blood pressure medication.\n\nIn general, it's always better to err on the side of caution and consult with a medical professional before making any changes to your medication regimen.",
+  "citations": [],
+  "specialty": "cardiology",
+  "error": null
+}
+Status Code: 200
+
+TEST CASE 5.1: Minimal Greeting
+Payload: {"patient_id": "patient-001", "query": "Hello"}
+Response: {
+  "answer": "Hello. I'm here to help. Unfortunately, I don't have any specific information about your condition or situation. However, I can provide some general safety guidance. If you're feeling unwell or experiencing any symptoms, it's always best to consult a medical professional for proper evaluation and care.\n\nIf you're in immediate danger or need emergency assistance, please call your local emergency number or visit the nearest hospital. If you're unsure about what to do, you can also contact a healthcare hotline or a trusted medical resource for guidance.\n\nIs there anything else I can help you with?",
+  "citations": [],
+  "specialty": "cardiology",
+  "error": null
+}
+Status Code: 200
+
+TEST CASE 5.2: Empty Query
+Payload: {"patient_id": "patient-001", "query": ""}
+Response: {
+  "answer": "I'm happy to help you, but I don't have any specific information about your situation. Since I couldn't find any relevant documents, I want to remind you to always consult a qualified healthcare professional for personalized advice.\n\nIn general, it's always a good idea to prioritize your health and safety. If you're experiencing any symptoms or concerns, please don't hesitate to reach out to a medical professional for guidance.\n\nIf you're looking for general health and safety information, I can suggest some general tips. However, please keep in mind that these are not specific to your situation and should not be taken as medical advice.\n\nIf you have any further questions or concerns, please don't hesitate to ask.",
+  "citations": [],
+  "specialty": "cardiology",
+  "error": null
+}
+Status Code: 200
+
+TEST CASE 5.3: Out of Scope
+Payload: {"patient_id": "patient-001", "query": "What is the capital of France?"}
+Response: {
+  "answer": "I'm happy to help you with your question, but I don't have any specific information about your query. However, I can provide you with general information.\n\nThe capital of France is Paris. If you're looking for more information, I recommend checking a reliable source such as a map or a travel guide.\n\nAs for your health, I want to remind you to prioritize your safety and well-being. If you have any concerns or questions about your health, I encourage you to reach out to a medical professional for personalized advice.\n\nPlease note that I'm a medical assistant and not a general knowledge expert. If you have any further questions or concerns, feel free to ask.",
+  "citations": [],
+  "specialty": "pediatrics",
+  "error": null
+}
+Status Code: 200
+
+================================================================================
+CATEGORY 6: ONCOLOGY ROUTING
+================================================================================
+
+TEST CASE 6.1: Triple-Negative Breast Cancer (TNBC)
+Payload: { "patient_id": "patient-001", "query": "What is the recommended treatment for triple-negative breast cancer in the early stages?" }
+Expected Specialty: oncology
+Expected Response: Should mention neoadjuvant chemotherapy with pembrolizumab and core needle biopsy.
+
+TEST CASE 6.2: Oncology Diagnosis
+Payload: { "patient_id": "patient-001", "query": "How is a breast cancer diagnosis typically confirmed?" }
+Expected Specialty: oncology
+Expected Response: Should mention core needle biopsy.
+
+================================================================================
+CATEGORY 7: NEUROLOGY ROUTING
+================================================================================
+
+TEST CASE 7.1: Migraine Treatment
+Payload: { "patient_id": "patient-001", "query": "I have severe migraines 6 times a month. What medications are first-line?" }
+Expected Specialty: neurology
+Expected Response: Should mention Triptans for acute treatment and potentially Propranolol/Topiramate for prevention.
+
+TEST CASE 7.2: Neurological Emergency
+Payload: { "patient_id": "patient-001", "query": "I just had a sudden thunderclap headache, the worst pain of my life." }
+Expected Specialty: neurology
+Expected Response: Should warn about subarachnoid hemorrhage and advise immediate neuroimaging.
+
+================================================================================
+CATEGORY 8: GENERAL PRACTICE ROUTING
+================================================================================
+
+TEST CASE 8.1: Common Cold & Antibiotics
+Payload: { "patient_id": "patient-001", "query": "Can I get antibiotics for my common cold? I've been sneezing for two days." }
+Expected Specialty: general_practice
+Expected Response: Should state that antibiotics are NOT effective against viral common colds.
+
+TEST CASE 8.2: Fever Persistence
+Payload: { "patient_id": "patient-001", "query": "How long should a fever last before I see a doctor for a respiratory infection?" }
+Expected Specialty: general_practice
+Expected Response: Should mention seeing a doctor if high fever persists for more than 3 days.
+
+================================================================================
+CATEGORY 9: PSYCHIATRY ROUTING
+================================================================================
+
+TEST CASE 9.1: Borderline Personality Disorder (BPD)
+Payload: { "patient_id": "patient-001", "query": "What are the core diagnostic features and recommended psychotherapy for Borderline Personality Disorder?" }
+Expected Specialty: psychiatry
+Expected Response: Should cite the APA BPD guideline and mention psychotherapy (e.g., DBT).
+
+TEST CASE 9.2: Schizophrenia Treatment
+Payload: { "patient_id": "patient-001", "query": "What are the latest pharmacological recommendations for treating acute schizophrenia?" }
+Expected Specialty: psychiatry
+Expected Response: Should cite the Schizophrenia Treatment guideline.
+
+TEST CASE 9.3: Depression Assessment
+Payload: { "patient_id": "patient-001", "query": "How is the severity of depression measured according to DSM-5?" }
+Expected Specialty: psychiatry
+Expected Response: Should mention the DSM-5 Severity Measure for Depression.

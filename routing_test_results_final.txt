@@ -1,0 +1,375 @@
+# Clinica-Router AI: Final Test Suite Results
+# Generated after full database population
+
+================================================================================
+TEST 1.1: Direct Chest Pain
+Payload: {
+  "patient_id": "patient-001",
+  "query": "I am experiencing sharp chest pain and shortness of breath."
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "I'm concerned about your symptoms. Sharp chest pain and shortness of breath can be indicative of several conditions. Based on the information provided, I would like to ask you a few questions to better understand your situation.\n\nHowever, I do notice that the context mentions \"precordial or chest murmurs\" as a symptom of Coarctation of the aorta (Source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 21). This condition can cause narrowing of the aorta, leading to reduced blood flow to the lower body. If you're experiencing sharp chest pain and shortness of breath, it's essential to consult a doctor for a proper evaluation and diagnosis.\n\nPlease seek immediate medical attention if you're experiencing severe chest pain or difficulty breathing.",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 92
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 21
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 8
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+================================================================================
+TEST 1.2: High Blood Pressure Inquiry
+Payload: {
+  "patient_id": "patient-001",
+  "query": "What are the long-term risks of having a blood pressure of 140/90?"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Unfortunately, the provided context does not directly address the long-term risks associated with a blood pressure of 140/90. However, it does mention that the total risk of cardiovascular disease for any given level of blood pressure rises with age (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 48).\n\nIt's also mentioned that the Hypertension Optimal Treatment (HOT) trial found maximal cardiovascular benefit when blood pressure was reduced to 139/83 mmHg (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 48). This suggests that blood pressure levels above 139/83 mmHg may be associated with increased cardiovascular risk.\n\nHowever, to determine the specific long-term risks associated with a blood pressure of 140/90, I would need more information or context.",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 48
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 43
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 20
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+================================================================================
+TEST 1.3: Heart Palpitations
+Payload: {
+  "patient_id": "patient-001",
+  "query": "My heart feels like it is skipping beats lately, especially at night."
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Based on the provided context, it seems that you're experiencing palpitations, which can be a symptom of various conditions. However, I couldn't find any direct information related to palpitations in the provided context.\n\nHowever, I can suggest that you may want to consider the following possibilities:\n\n- Depression: As mentioned in the context, depression has been associated with an increased risk of coronary heart disease, which can sometimes manifest as palpitations (source: WHO cardiovascular disease prevention and control guideline.pdf, Page 46).\n- Hypokalaemia: Low potassium levels can cause palpitations, among other symptoms (source: WHO cardiovascular disease prevention and control guideline.pdf, Page 21).\n- Other conditions: The context mentions several conditions that can cause palpitations, such as Cushing syndrome, coarctation of the aorta, and others. However, these conditions are not directly related to palpitations in the context.\n\nI would recommend consulting a healthcare professional for a proper evaluation and diagnosis. They can assess your overall health, perform necessary tests, and provide a more accurate explanation for your symptoms.",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 46
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 21
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+================================================================================
+TEST 2.1: Infant Fever
+Payload: {
+  "patient_id": "patient-001",
+  "query": "My 6-month-old has a fever of 102F and is very fussy."
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Based on the provided context, it seems like your child might have a viral infection such as measles or a urinary tract infection. However, since your child is 6 months old, we'll consider the possibility of a urinary tract infection first.\n\nFor a child of this age, the recommended treatment for a fever is gentamicin at 7.5 mg/kg IM or IV once daily until the fever has subsided (source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 210). \n\nAdditionally, supportive care is essential. Encourage your child to drink or breastfeed regularly to maintain a good fluid intake, which will assist in clearing the infection and prevent dehydration (source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 210). If your child has pain, treat with paracetamol; avoid non-steroidal anti-inflammatory drugs (NSAIDs) (source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 210).\n\nHowever, since your child has a fever of 102F and is very fussy, it's also possible that your child has measles. In this case, vitamin A therapy is recommended (source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 200). Give oral vitamin A at 50,000 IU (for a child aged < 6 months) (source: WHO pocket book of hospital care for children 2nd edition.pdf, Page: 200).\n\nIt's essential to consult a healthcare professional for a proper diagnosis and treatment plan.",
+  "citations": [
+    {
+      "source": "WHO pocket book of hospital care for children 2nd edition.pdf",
+      "page": 210
+    },
+    {
+      "source": "WHO pocket book of hospital care for children 2nd edition.pdf",
+      "page": 202
+    },
+    {
+      "source": "WHO pocket book of hospital care for children 2nd edition.pdf",
+      "page": 200
+    }
+  ],
+  "specialty": "pediatrics",
+  "error": null
+}
+
+================================================================================
+TEST 2.2: Childhood Vaccinations
+Payload: {
+  "patient_id": "patient-001",
+  "query": "What is the recommended schedule for the MMR vaccine?"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Unfortunately, the provided context does not mention the MMR vaccine.",
+  "citations": [
+    {
+      "source": "WHO immunization in practice a guide for health workers.pdf",
+      "page": 54
+    },
+    {
+      "source": "WHO immunization in practice a guide for health workers.pdf",
+      "page": 42
+    },
+    {
+      "source": "WHO immunization in practice a guide for health workers.pdf",
+      "page": 50
+    }
+  ],
+  "specialty": "pediatrics",
+  "error": null
+}
+
+================================================================================
+TEST 2.3: Pediatric Rash
+Payload: {
+  "patient_id": "patient-001",
+  "query": "My toddler has a red bumpy rash after eating strawberries."
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Based on the provided context, it seems that the symptoms you're describing don't match the typical symptoms of rubella or CRS. However, I can tell you that the rash you're describing could be related to an allergic reaction or an infection.\n\nIf your child has a rash after eating strawberries, it's possible that they're experiencing an allergic reaction to the strawberries. In this case, it's essential to monitor their symptoms and seek medical attention if they worsen.\n\nHowever, if you're concerned about a possible infection, I would recommend consulting the provided context again. According to the WHO pocket book of hospital care for children 2nd edition (page 167), children typically start taking solid foods around 6 months of age. There's no mention of a rash being a symptom of a typical infection or condition in this context.\n\nTo determine the cause of the rash, I would recommend consulting a healthcare professional for a proper evaluation and diagnosis.\n\n(source: WHO pocket book of hospital care for children 2nd edition.pdf, page 167)",
+  "citations": [
+    {
+      "source": "WHO pocket book of hospital care for children 2nd edition.pdf",
+      "page": 167
+    }
+  ],
+  "specialty": "pediatrics",
+  "error": null
+}
+
+================================================================================
+TEST 3.1: Drug Interactions
+Payload: {
+  "patient_id": "patient-001",
+  "query": "Is it safe to take Metformin with Ibuprofen?"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Unfortunately, there is no direct information about the safety of taking Metformin with Ibuprofen in the provided context. However, we can look at the general information about medication safety and polypharmacy.\n\nAccording to the provided context, NSAIDs (such as Ibuprofen) can increase the risk of gastrointestinal bleeding and cardiovascular events (source: WHO medication safety in polypharmacy technical report.pdf, Page: 8). However, there is no specific information about the interaction between Metformin and Ibuprofen.\n\nTo answer your question, I would recommend consulting a healthcare professional or a reliable medical resource for specific guidance on the safety of taking Metformin with Ibuprofen.",
+  "citations": [
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 52
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 8
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 1
+    }
+  ],
+  "specialty": "drug_safety",
+  "error": null
+}
+
+================================================================================
+TEST 3.2: Side Effects
+Payload: {
+  "patient_id": "patient-001",
+  "query": "I started taking Lisinopril and now I have a persistent dry cough. Is this normal?"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Based on the provided context, it seems that Lisinopril is an ACE inhibitor, and as mentioned in the text, ACE inhibitors were found to have a higher risk of heart failure and a higher risk of stroke in Afro-American subjects. However, there is no direct mention of a persistent dry cough as a side effect of Lisinopril in the provided context.\n\nHowever, it is worth noting that ACE inhibitors are known to cause a dry cough in some patients as a side effect, although the exact prevalence is not mentioned in the provided context. \n\nIf you are experiencing a persistent dry cough after starting Lisinopril, I would recommend consulting your doctor or healthcare provider for further evaluation and guidance. They can assess your individual situation and provide personalized advice on managing any potential side effects.",
+  "citations": [
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 24
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 49
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+================================================================================
+TEST 3.3: Dosage Safety
+Payload: {
+  "patient_id": "patient-001",
+  "query": "What is the maximum safe daily dose of acetaminophen for an adult?"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Unfortunately, the provided context does not mention acetaminophen or its safe daily dose. The context discusses a 57-year-old woman's medication list and potential medication-related risks, but it does not include acetaminophen.",
+  "citations": [
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 32
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 53
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 52
+    }
+  ],
+  "specialty": "drug_safety",
+  "error": null
+}
+
+================================================================================
+TEST 4.1: Condition-Specific Query
+Payload: {
+  "patient_id": "patient-001",
+  "query": "How does my hypertension affect my risk for other diseases?"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Based on the provided context, it appears that hypertension increases the risk of various diseases, including:\n\n* Coronary heart disease (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n* Heart failure (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n* Cerebrovascular disease (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n* Peripheral vascular disease (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n* Diabetes (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n* Renal disease (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n* Stroke (source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 22)\n\nAdditionally, hypertension may also increase the risk of severe COVID-19, as mentioned in the guideline for the pharmacological treatment of hypertension in adults (source: WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf, Page: 34).",
+  "citations": [
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 43
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 22
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 34
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+================================================================================
+TEST 4.2: Medication Interaction with Condition
+Payload: {
+  "patient_id": "patient-001",
+  "query": "Can I take decongestants with my current blood pressure medication?"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Based on the provided context, there is no direct information about decongestants and their interaction with blood pressure medication. However, it's generally recommended to consult with a healthcare professional before taking any new medication, including decongestants, especially if you're already taking blood pressure medication.\n\nIt's also worth noting that the context mentions the importance of adherence to treatment and the potential benefits of combination therapy for blood pressure management. If you're considering taking decongestants, it's best to discuss this with your healthcare provider to ensure it won't interfere with your current treatment plan.\n\n(source: WHO cardiovascular disease prevention and control guideline.pdf, Page: 50)",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 31
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 50
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 25
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+================================================================================
+TEST 5.1: Minimal Greeting
+Payload: {
+  "patient_id": "patient-001",
+  "query": "Hello"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "Hello. How can I assist you today?",
+  "citations": [
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 4
+    },
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 4
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 8
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+================================================================================
+TEST 5.2: Empty Query
+Payload: {
+  "patient_id": "patient-001",
+  "query": ""
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "It seems like there is no patient query provided. Please provide the patient's query so I can assist you accordingly.",
+  "citations": [
+    {
+      "source": "WHO cardiovascular disease prevention and control guideline.pdf",
+      "page": 46
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 4
+    },
+    {
+      "source": "WHO Guideline for the pharmacological treatment of hypertension in adults 2021.pdf",
+      "page": 8
+    }
+  ],
+  "specialty": "cardiology",
+  "error": null
+}
+
+================================================================================
+TEST 5.3: Out of Scope
+Payload: {
+  "patient_id": "patient-001",
+  "query": "What is the capital of France?"
+}
+----------------------------------------
+Status: 200
+Response: {
+  "answer": "I'm not able to find any information about the capital of France in the provided context. The context appears to be related to a technical report on medication safety in polypharmacy from the World Health Organization (WHO).",
+  "citations": [
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 4
+    },
+    {
+      "source": "WHO medication safety in polypharmacy technical report.pdf",
+      "page": 61
+    }
+  ],
+  "specialty": "drug_safety",
+  "error": null
+}
+

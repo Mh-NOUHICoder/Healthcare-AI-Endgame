@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+.pytest_cache/
+
+# Vector Store (Local DB)
+chroma_db/
+
+# Node.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.env*.local
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+.vscode/
+ngrok.exe
